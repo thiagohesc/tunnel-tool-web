@@ -56,6 +56,9 @@ export default function TunnelListPanel({
                 <span className="tt-row-title">
                   {tunnel.name || "(sem nome)"}
                   {duplicatedName && <em className="tt-row-warn">nome duplicado</em>}
+                  {!!(tunnel.tags || []).length && (
+                    <span className="tt-row-tags">{tunnel.tags.join(", ")}</span>
+                  )}
                 </span>
                 <span className="tt-row-mono">
                   {tunnel.local_port || "-"}

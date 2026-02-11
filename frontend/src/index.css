@@ -389,6 +389,13 @@ body {
   font-style: normal;
 }
 
+.tt-row-tags {
+  font-size: 0.65rem;
+  color: var(--ink-400);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
 .tt-badge {
   justify-self: start;
   border-radius: 999px;
