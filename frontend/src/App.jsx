@@ -462,6 +462,7 @@ export default function App() {
             />
 
             <TunnelDetailsCard
+              selectedIndex={selectedIndex}
               selectedTunnel={selectedTunnel}
               selectedErrors={selectedErrors}
               nameDuplicates={nameDuplicates}

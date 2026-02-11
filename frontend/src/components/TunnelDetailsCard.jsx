@@ -1,4 +1,7 @@
+import { useEffect, useState } from "react";
+
 export default function TunnelDetailsCard({
+  selectedIndex,
   selectedTunnel,
   selectedErrors,
   nameDuplicates,
@@ -14,6 +17,24 @@ export default function TunnelDetailsCard({
   message,
   error,
 }) {
+  const [tagsInput, setTagsInput] = useState("");
+  const [tagsDirty, setTagsDirty] = useState(false);
+
+  useEffect(() => {
+    if (!selectedTunnel) {
+      setTagsInput("");
+      setTagsDirty(false);
+      return;
+    }
+    setTagsInput((selectedTunnel.tags || []).join(", "));
+    setTagsDirty(false);
+  }, [selectedIndex]);
+
+  useEffect(() => {
+    if (!selectedTunnel || tagsDirty) return;
+    setTagsInput((selectedTunnel.tags || []).join(", "));
+  }, [selectedTunnel?.tags, tagsDirty, selectedTunnel]);
+
   return (
     <div className="tt-card tt-panel-content">
       <div className="flex flex-wrap items-center justify-between gap-3">
@@ -71,8 +92,25 @@ export default function TunnelDetailsCard({
             Tags (separador ",")
             <input
               className="tt-input"
-              value={(selectedTunnel.tags || []).join(", ")}
-              onChange={(e) => updateTunnel({ tags: buildTags(e.target.value) })}
+              value={tagsInput}
+              onChange={(e) => {
+                const nextValue = e.target.value;
+                setTagsInput(nextValue);
+                setTagsDirty(true);
+                updateTunnel({ tags: buildTags(nextValue) });
+              }}
+              onBlur={() => {
+                if (!tagsDirty) return;
+                const normalized = buildTags(tagsInput);
+                setTagsInput(normalized.join(", "));
+                setTagsDirty(false);
+                updateTunnel({ tags: normalized });
+              }}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  e.currentTarget.blur();
+                }
+              }}
             />
           </label>
 
