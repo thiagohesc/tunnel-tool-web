@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "tunnels": [
+    {
+      "name": "Tunnel principal",
+      "tags": [
+        "monitoring"
+      ],
+      "enabled": true,
+      "local_port": 1111,
+      "dest_host": "10.1.1.10",
+      "dest_port": 10050,
+      "ssh_user": "user",
+      "ssh_host": "10.1.1.12",
+      "ssh_port": 22
+    }
+  ]
+}
