@@ -1,5 +1,7 @@
 # Frontend do Tunnel Tool
 
+![Interface do Tunnel Tool](exemplo.png)
+
 Este frontend oferece uma UI para gerenciar a configuracao de tunels no backend.
 Ele e servido por Nginx e faz proxy das requisicoes da API para `/api`.
 
