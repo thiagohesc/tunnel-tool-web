@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "tunnels": [
+    {
+      "name": "hosta",
+      "tags": [
+        "Banco",
+        "grupo2"
+      ],
+      "enabled": true,
+      "local_port": 19000,
+      "dest_host": "10.5.5.5",
+      "dest_port": 50001,
+      "ssh_user": "netcool",
+      "ssh_host": "10.2.2.4",
+      "ssh_port": 22
+    },
+    {
+      "name": "host",
+      "tags": [
+        "grupo1"
+      ],
+      "enabled": true,
+      "local_port": 18001,
+      "dest_host": "10.1.1.1",
+      "dest_port": 10050,
+      "ssh_user": "user1",
+      "ssh_host": "10.2.2.4",
+      "ssh_port": 22
+    }
+  ]
+}

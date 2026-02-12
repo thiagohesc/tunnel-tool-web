@@ -1,0 +1,22 @@
+[Unit]
+Description=Tunnel Agent Runner
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=root
+Group=root
+WorkingDirectory=/opt/tunnel-agent
+ExecStart=/usr/bin/python3 /opt/tunnel-agent/tunnel_agent.py /opt/tunnel-agent/conf_files/conf.json
+
+KillMode=process
+# Hardening
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=false
+ReadWritePaths=/opt/tunnel-agent
+
+[Install]
+WantedBy=multi-user.target
