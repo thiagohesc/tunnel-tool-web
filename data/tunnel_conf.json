@@ -4,10 +4,7 @@
     {
       "name": "Tunnel principal",
       "tags": [
-        "monitoring",
-        "ddd",
-        "ddd",
-        "ddd"
+        "g2"
       ],
       "enabled": true,
       "local_port": 1111,
